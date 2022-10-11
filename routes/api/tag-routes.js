@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { Tag, Product, ProductTag } = require('../../models');
+const { Tag, Product, ProductTag, Category } = require('../../models');
 
 // The `/api/tags` endpoint
 
@@ -16,9 +16,9 @@ router.get('/', (req, res) => {
         'product_name',
         'price',
         'stock',
-        'category_name'
+        'category_id'
       ]
-    }
+    },
   })
   .then(dbTagData => res.json(dbTagData))
   .catch(err => {
@@ -45,7 +45,7 @@ router.get('/:id', (req, res) => {
           'product_name',
           'price',
           'stock',
-          'category_name'
+          'category_id'
         ]
       }
     ]
@@ -100,7 +100,7 @@ router.put('/:id', (req, res) => {
 
 router.delete('/:id', (req, res) => {
   // delete on tag by its `id` value
-  Tag.destroy(req.body, {
+  Tag.destroy({
     where: {
       id: req.params.id
     }
