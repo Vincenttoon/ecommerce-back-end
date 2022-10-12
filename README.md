@@ -38,7 +38,7 @@ By: [Vincent Toon](https://github.com/vincenttoon)
 
 ## Tests
 
-[Video demonstration of application:](...)
+[Video demonstration of application:](https://drive.google.com/file/d/1T8yhitozRUDYThPmV2k0S2mTH-s0G52u/view)
 
 ## Usage
 
