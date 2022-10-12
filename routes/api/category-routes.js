@@ -3,8 +3,8 @@ const { Category, Product } = require('../../models');
 
 // The `/api/categories` endpoint
 
+// route to find all categories
 router.get('/', (req, res) => {
-  // find all categories
   Category.findAll({
     include: {  
       model: Product,
@@ -16,19 +16,22 @@ router.get('/', (req, res) => {
         'category_id'
       ]}
   })
+  // takes information and returns it in JSON
   .then(dbCategoryData => res.json(dbCategoryData))
+  // error handling
   .catch(err => {
     console.log(err);
     res.status(500).json(err)
   });
 });
-
+  // route to find one category by its `id` value
 router.get('/:id', (req, res) => {
-  // find one category by its `id` value
   Category.findOne({
+    // where delete targets the selected category
     where:{
       id: req.params.id
     },
+    // includes information from Product model
     include:  {
       model: Product,
       attributes: [
@@ -40,6 +43,7 @@ router.get('/:id', (req, res) => {
       ]
     }
   })
+  // error handling, then returns data in json format
     .then(dbCategoryData => {
       if (!dbCategoryData) {
         res.status(404).json({ message: 'No category found with this id' });
@@ -47,26 +51,30 @@ router.get('/:id', (req, res) => {
       }
       res.json(dbCategoryData);
     })
+    // error handling
     .catch(err => {
       console.log(err);
       res.status(500).json(err);
     });
 });
 
+  //route to create a new category
 router.post('/', (req, res) => {
-  // create a new category
   Category.create({
     category_name: req.body.category_name
   })
+  // route to return data in json format
   .then(dbCategoryData => res.json(dbCategoryData))
+  // error handling
   .catch(err => {
     console.log(err);
     res.status(500).json(err)
   })
 });
 
+  // route to update a category by its `id` value
 router.put('/:id', (req, res) => {
-  // update a category by its `id` value
+  // where delete targets the selected category
   Category.update(req.body, 
     {
       where: {
@@ -74,6 +82,7 @@ router.put('/:id', (req, res) => {
       }
     }
   )
+  // error handling, then returns data in json formatting
   .then(dbCategoryData => {
     if (!dbCategoryData) {
       res.status(404).json({ message: 'No category found with this id' });
@@ -81,19 +90,22 @@ router.put('/:id', (req, res) => {
     }
     res.json(dbCategoryData);
   })
+  // error handling
   .catch(err => {
     console.log(err);
     res.status(500).json(err);
   });
 });
 
+  // route to delete a category by its `id` value
 router.delete('/:id', (req, res) => {
-  // delete a category by its `id` value
   Category.destroy({
+    // where delete targets the selected category
     where: {
       id: req.params.id
     }
   })
+    // error handling, then returns data in json formatting
   .then(dbCategoryData => {
     if (!dbCategoryData) {
       res.status(404).json({ message: 'No category found with this id' });
@@ -101,6 +113,7 @@ router.delete('/:id', (req, res) => {
     }
     res.json(dbCategoryData);
   })
+    // error handling
   .catch(err => {
     console.log(err);
     res.status(500).json(err);

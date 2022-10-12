@@ -6,12 +6,14 @@ class ProductTag extends Model {}
 
 ProductTag.init(
   {
+    // creates id parameter
     id: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true
     },
+    // foreign key from product Model, uses id
     product_id: {
       type: DataTypes.INTEGER,
       references: {
@@ -19,6 +21,7 @@ ProductTag.init(
         key: 'id'
       }
     },
+    // foreign key from tag Model, uses id
     tag_id: {
       type: DataTypes.INTEGER,
       references: {
