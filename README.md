@@ -38,7 +38,9 @@ By: [Vincent Toon](https://github.com/vincenttoon)
 
 ## Tests
 
-[Video demonstration of application:](https://drive.google.com/file/d/1T8yhitozRUDYThPmV2k0S2mTH-s0G52u/view)
+[Video demonstration of sourcing, seeding and starting application](https://drive.google.com/file/d/17ZaB43rTsWQB2iFA5lAHeJpH0UAKq5fK/view)
+
+[Video demonstration of application running:](https://drive.google.com/file/d/1T8yhitozRUDYThPmV2k0S2mTH-s0G52u/view)
 
 ## Usage
 
